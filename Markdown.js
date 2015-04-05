@@ -51,7 +51,7 @@ var Markdown = React.createClass({
 
   render: function() {
 
-    var jsxString = marked(this.props.children, { renderer: markedRenderer })
+    var jsxString = marked(this.props.children, { renderer: renderer })
     var jsx = exec(jsxString, { styles: this.props.style });
 
     return {jsx};
