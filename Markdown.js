@@ -3,6 +3,8 @@ var {
   Text,
   View,
 } = React;
+var _ = require('underscore');
+var Buffer = require('buffer');
 var marked = require('marked');
 var renderer = require('./renderer');
 
