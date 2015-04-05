@@ -32,7 +32,7 @@ function exec(jsxString, lexicalScope) {
 
   var thunkCode = _.template(thunkTemplate)({
     vars: lexicalVars.join('\n'),
-    code: code
+    code: jsxString
   });
 
   var thunk = eval(thunkCode);
