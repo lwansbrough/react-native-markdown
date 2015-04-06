@@ -4,7 +4,9 @@ A component for rendering Markdown in React Native. This component is still in e
 
 ## Known issues
 
-**Warning: This module currently uses `eval` and is susceptible to JS injection. Working on a fix for this.**
+**~~Warning: This module currently uses `eval` and is susceptible to JS injection. Working on a fix for this.~~**
+
+**I'm not convinced we can avoid using `eval`, though I believe I have resolved the injection issue.**
 
 ## Getting started
 

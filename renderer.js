@@ -77,4 +77,8 @@ renderer.tablecell = function() {
   return '';
 };
 
+renderer.text = function(text) {
+  return '{"' + text.replace(/"/g,'\"') + '"}';
+};
+
 module.exports = renderer;

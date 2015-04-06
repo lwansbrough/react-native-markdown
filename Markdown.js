@@ -18,8 +18,6 @@ function transform(jsxString, scope) {
 function exec(jsxString, lexicalScope) {
   var jsx = transform(jsxString);
 
-  console.log(jsx);
-
   var thunkTemplate = [
     '(function () {    ',
     '  <%- vars %>     ',
@@ -60,7 +58,9 @@ var Markdown = React.createClass({
 
   render: function() {
 
-    var jsxString = marked(this.props.children, { renderer: renderer })
+    var children = this.props.children.toString();
+
+    var jsxString = marked(children, { renderer: renderer })
     var jsx = exec(jsxString, { styles: _.merge(styles, this.props.style) });
 
     return jsx;
