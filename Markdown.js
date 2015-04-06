@@ -1,5 +1,6 @@
 var React = require('react-native');
 var {
+  Image,
   Text,
   View,
 } = React;
