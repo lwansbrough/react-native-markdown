@@ -47,3 +47,4 @@ Default style properties will be applied to the markdown. You will likely want t
 
 - `emphasis` (`<Text>`)
 - `paragraph` (`<Text>`)
+- `strong` (`<Text>`)
