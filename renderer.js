@@ -13,4 +13,8 @@ renderer.paragraph = function(text) {
   return '<Text style={styles.paragraph}>' + text + '</Text>';
 };
 
+renderer.strong = function(text) {
+  return '<Text style={styles.strong}>' + text + '</Text>';
+};
+
 module.exports = renderer;

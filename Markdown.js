@@ -3,7 +3,7 @@ var {
   Text,
   View,
 } = React;
-var _ = require('underscore');
+var _ = require('lodash');
 var Buffer = require('buffer');
 var marked = require('marked');
 var renderer = require('./renderer');
@@ -16,13 +16,16 @@ function transform(jsxString, scope) {
 
 function exec(jsxString, lexicalScope) {
   var jsx = transform(jsxString);
+
+  console.log(jsx);
+
   var thunkTemplate = [
-    '(function () {        ',
-    '    <%- vars %>       ',
-    '    return (          ',
-    '        <%= code %>   ',
-    '    );                ',
-    '})                    '
+    '(function () {    ',
+    '  <%- vars %>     ',
+    '  return (        ',
+    '    <%= code %>   ',
+    '  );              ',
+    '})                '
   ].join('\n');
 
   var lexicalVarTemplate = 'var <%- key %> = lexicalScope.<%- key %>;';
@@ -42,10 +45,13 @@ function exec(jsxString, lexicalScope) {
 
 var styles = {
   emphasis: {
-    color: 'red'
+    fontFamily: 'HelveticaNeue-Italic'
   },
   paragraph: {
-    color: 'green'
+    margin: 10
+  },
+  strong: {
+    fontFamily: 'HelveticaNeue-Bold'
   }
 };
 
@@ -54,9 +60,9 @@ var Markdown = React.createClass({
   render: function() {
 
     var jsxString = marked(this.props.children, { renderer: renderer })
-    var jsx = exec(jsxString, { styles: this.props.style });
+    var jsx = exec(jsxString, { styles: _.merge(styles, this.props.style) });
 
-    return {jsx};
+    return jsx;
   }
 });
 
