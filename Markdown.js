@@ -13,10 +13,13 @@ var styles = {
     backgroundColor: '#cccccc',
     height: 1
   },
+  image: {
+    height: 50, // TODO: React Native needs to support auto image size
+    width: 50 // TODO: React Native needs to support auto image size
+  },
   u: {
-    borderColor: '#666666',
-    borderBottomWidth: 1,
-    paddingBottom: 2
+    borderColor: '#333333',
+    borderBottomWidth: 1
   },
   paragraph: {
     margin: 10

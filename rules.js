@@ -8,6 +8,11 @@ var SimpleMarkdown = require('simple-markdown');
 
 module.exports = function(styles) {
   return {
+    br: {
+      react: function(node, output) {
+        return React.createElement(Text, { style: styles.br }, '\n\n');
+      }
+    },
     em: {
       react: function(node, output) {
         return React.createElement(Text, { style: styles.em }, output(node.content));
@@ -23,7 +28,7 @@ module.exports = function(styles) {
         return React.createElement(Image, {
           source: { uri: node.target },
           style: styles.image
-        }, output(node.content));
+        });
       }
     },
     paragraph: {
@@ -37,17 +42,11 @@ module.exports = function(styles) {
       }
     },
     text: {
-
-      // Finally transform this syntax node into a
-      // React element
       react: function(node, output) {
         return React.createElement(Text, { style: styles.text }, node.content);
       }
     },
     u: {
-
-      // Finally transform this syntax node into a
-      // React element
       react: function(node, output) {
         return React.createElement(Text, { style: styles.u }, output(node.content));
       }
