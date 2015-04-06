@@ -62,7 +62,7 @@ Default style properties will be applied to the markdown. You will likely want t
 - `code` (`<Text>`)
 - `blockquote` (`Not implemented`)
 - `html` (`<Text>`)
-- `heading` (`<Text>`)
+- `heading` (`<Text>`) - Also `heading1` through `heading6`
 - `horizontalRule` (`<View>`)
 - `list` (`Not implemented`)
 - `listitem` (`Not implemented`)
