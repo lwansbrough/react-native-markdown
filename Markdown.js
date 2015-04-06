@@ -6,8 +6,17 @@ var _ = require('lodash');
 var SimpleMarkdown = require('simple-markdown');
 
 var styles = {
-  u: {
+  em: {
     fontFamily: 'HelveticaNeue-Italic'
+  },
+  hr: {
+    backgroundColor: '#cccccc',
+    height: 1
+  },
+  u: {
+    borderColor: '#666666',
+    borderBottomWidth: 1,
+    paddingBottom: 2
   },
   paragraph: {
     margin: 10

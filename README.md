@@ -49,10 +49,10 @@ Default style properties will be applied to the markdown. You will likely want t
 - `codeBlock` (`Not implemented`)
 - `def` (`Not implemented`)
 - `del` (`Not implemented`)
-- `em` (`Not implemented`)
+- `em` (`<Text>`)
 - `fence` (`Not implemented`)
 - `heading` (`Not implemented`) - Also `heading1` through `heading6`
-- `hr` (`Not implemented`)
+- `hr` (`<View>`)
 - `image` (`<Image>`)
 - `inlineCode` (`Not implemented`)
 - `link` (`Not implemented`)
