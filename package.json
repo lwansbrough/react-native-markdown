@@ -9,9 +9,8 @@
   "main": "Markdown.js",
   "author": "Lochlan Wansbrough <lochie@live.com> (http://lwansbrough.com)",
   "dependencies": {
-    "buffer": "^3.1.2",
     "lodash": "^3.6.0",
-    "marked": "https://github.com/lwansbrough/marked.git",
-    "react-native": "^0.3.1"
+    "react-native": "^0.3.1",
+    "simple-markdown": "git://github.com/lwansbrough/simple-markdown.git"
   }
 }

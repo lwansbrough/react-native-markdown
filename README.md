@@ -2,12 +2,6 @@
 
 A component for rendering Markdown in React Native. This component is still in early development.
 
-## Known issues
-
-**~~Warning: This module currently uses `eval` and is susceptible to JS injection. Working on a fix for this.~~**
-
-**I'm not convinced we can avoid using `eval`, though I believe I have resolved the injection issue.**
-
 ## Getting started
 
 1. `npm install react-native-markdown --save`
@@ -49,24 +43,26 @@ Default style properties will be applied to the markdown. You will likely want t
 
 *Note: The text inside the parentheses denotes the element type.*
 
-- `emphasis` (`<Text>`)
-- `paragraph` (`<Text>`)
-- `strong` (`<Text>`)
-- `strong` (`<Text>`)
-- `emphasis` (`<Text>`)
-- `codespan` (`<Text>`)
-- `break` (`<View>`)
-- `deleted` (`<Text>`)
-- `link` (`Not implemented`)
+- `autolink` (`Not implemented`)
+- `blockQuote` (`Not implemented`)
+- `br` (`Not implemented`)
+- `codeBlock` (`Not implemented`)
+- `def` (`Not implemented`)
+- `del` (`Not implemented`)
+- `em` (`Not implemented`)
+- `fence` (`Not implemented`)
+- `heading` (`Not implemented`) - Also `heading1` through `heading6`
+- `hr` (`Not implemented`)
 - `image` (`<Image>`)
-- `code` (`<Text>`)
-- `blockquote` (`Not implemented`)
-- `html` (`<Text>`)
-- `heading` (`<Text>`) - Also `heading1` through `heading6`
-- `horizontalRule` (`<View>`)
+- `inlineCode` (`Not implemented`)
+- `link` (`Not implemented`)
 - `list` (`Not implemented`)
-- `listitem` (`Not implemented`)
+- `mailto` (`Not implemented`)
+- `newline` (`Not implemented`)
 - `paragraph` (`<Text>`)
-- `table` (`Not implemented`)
-- `tablerow` (`Not implemented`)
-- `tablecell` (`Not implemented`)
+- `refimage` (`Not implemented`)
+- `reflink` (`Not implemented`)
+- `strong` (`<Text>`)
+- `text` (`<Text>`)
+- `u` (`<Text>`)
+- `url` (`Not implemented`)

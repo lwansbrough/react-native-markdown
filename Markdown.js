@@ -1,49 +1,12 @@
 var React = require('react-native');
 var {
-  Image,
-  Text,
-  View,
+  View
 } = React;
 var _ = require('lodash');
-var Buffer = require('buffer');
-var marked = require('marked');
-var renderer = require('./renderer');
-
-function transform(jsxString, scope) {
-  var header = '/** @jsx React.DOM */';
-  jsxString = header + '\n' + jsxString;
-  return require('react-tools').transform(jsxString);
-}
-
-function exec(jsxString, lexicalScope) {
-  var jsx = transform(jsxString);
-
-  var thunkTemplate = [
-    '(function () {    ',
-    '  <%- vars %>     ',
-    '  return (        ',
-    '    <%= code %>   ',
-    '  );              ',
-    '})                '
-  ].join('\n');
-
-  var lexicalVarTemplate = 'var <%- key %> = lexicalScope.<%- key %>;';
-  var lexicalVars = _.map(lexicalScope, function (val, key) {
-    return _.template(lexicalVarTemplate)({ key: key });
-  });
-
-  var thunkCode = _.template(thunkTemplate)({
-    vars: lexicalVars.join('\n'),
-    code: jsx
-  });
-
-  var thunk = eval(thunkCode);
-
-  return thunk.apply(null);
-}
+var SimpleMarkdown = require('simple-markdown');
 
 var styles = {
-  emphasis: {
+  u: {
     fontFamily: 'HelveticaNeue-Italic'
   },
   paragraph: {
@@ -54,16 +17,25 @@ var styles = {
   }
 };
 
+
 var Markdown = React.createClass({
 
+  componentWillMount: function() {
+    var rules = require('./rules')(_.merge(styles, this.props.style));
+    rules = _.merge(SimpleMarkdown.defaultRules, rules);
+
+    var parser = SimpleMarkdown.parserFor(rules);
+    this.parse = function(source) {
+      var blockSource = source + '\n\n';
+      return parser(blockSource, {inline: false});
+    };
+    this.renderer = SimpleMarkdown.outputFor(SimpleMarkdown.ruleOutput(rules, 'react'));
+  },
+
   render: function() {
-
-    var children = this.props.children.toString();
-
-    var jsxString = marked(children, { renderer: renderer })
-    var jsx = exec(jsxString, { styles: _.merge(styles, this.props.style) });
-
-    return jsx;
+    var child = this.props.children.toString();
+    var tree = this.parse(child);
+    return <View>{this.renderer(tree)}</View>;
   }
 });
 
