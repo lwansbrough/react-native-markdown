@@ -22,13 +22,11 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
-  Text,
-  View,
-  TouchableHighlight
+  View
 } = React;
 var Markdown = require('react-native-markdown');
 
-var cameraApp = React.createClass({
+var mdApp = React.createClass({
   render: function() {
     return (
       <View>
@@ -40,7 +38,7 @@ var cameraApp = React.createClass({
   }
 });
 
-AppRegistry.registerComponent('cameraApp', () => cameraApp);
+AppRegistry.registerComponent('mdApp', () => mdApp);
 ```
 
 ## Properties
