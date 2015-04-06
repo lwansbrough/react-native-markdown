@@ -5,6 +5,10 @@ marked.setOptions({
 
 var renderer = new marked.Renderer();
 
+renderer.blockquote = function() {
+  return '';
+};
+
 renderer.br = function() {
   return '<View style={styles.break}></View>';
 };
@@ -30,7 +34,7 @@ renderer.heading = function(text, level) {
 };
 
 renderer.hr = function() {
-  return '';
+  return '<View style={styles.horizontalRule}/>';
 };
 
 renderer.html = function(html) {
