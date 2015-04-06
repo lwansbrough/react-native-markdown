@@ -56,7 +56,7 @@ Default style properties will be applied to the markdown. You will likely want t
 - `emphasis` (`<Text>`)
 - `codespan` (`<Text>`)
 - `break` (`<View>`)
-- `delete` (`<Text>`)
+- `deleted` (`<Text>`)
 - `link` (`Not implemented`)
 - `image` (`<Image>`)
 - `code` (`<Text>`)
