@@ -2,6 +2,10 @@
 
 A component for rendering Markdown in React Native. This component is still in early development.
 
+## Known issues
+
+**Warning: This module currently uses `eval` and is susceptible to JS injection. Working on a fix for this.**
+
 ## Getting started
 
 1. `npm install react-native-markdown --save`
@@ -48,3 +52,21 @@ Default style properties will be applied to the markdown. You will likely want t
 - `emphasis` (`<Text>`)
 - `paragraph` (`<Text>`)
 - `strong` (`<Text>`)
+- `strong` (`<Text>`)
+- `emphasis` (`<Text>`)
+- `codespan` (`<Text>`)
+- `break` (`<View>`)
+- `delete` (`<Text>`)
+- `link` (`Not implemented`)
+- `image` (`<Image>`)
+- `code` (`<Text>`)
+- `blockquote` (`<Text>`)
+- `html` (`<Text>`)
+- `heading` (`<Text>`)
+- `hr` (`<View>`)
+- `list` (`Not implemented`)
+- `listitem` (`Not implemented`)
+- `paragraph` (`<Text>`)
+- `table` (`Not implemented`)
+- `tablerow` (`Not implemented`)
+- `tablecell` (`Not implemented`)
