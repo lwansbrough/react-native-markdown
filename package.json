@@ -12,5 +12,13 @@
     "lodash": "^3.6.0",
     "react-native": "^0.3.1",
     "simple-markdown": "git://github.com/lwansbrough/simple-markdown.git"
-  }
+  },
+  "keywords": [
+    "react",
+    "native",
+    "markdown",
+    "md",
+    "parse",
+    "parser"
+  ]
 }
