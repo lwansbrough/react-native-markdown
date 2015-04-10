@@ -23,7 +23,7 @@ var styles = {
   },
   paragraph: {
     margin: 10,
-    flexWrap: 1,
+    flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start'
@@ -49,7 +49,9 @@ var Markdown = React.createClass({
   },
 
   render: function() {
-    var child = this.props.children.toString();
+
+    var child = _.isArray(this.props.children)
+      ? this.props.children.join('') : this.props.children;
     var tree = this.parse(child);
     return <View style={this.props.style}>{this.renderer(tree)}</View>;
   }
