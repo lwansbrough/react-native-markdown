@@ -22,7 +22,11 @@ var styles = {
     borderBottomWidth: 1
   },
   paragraph: {
-    margin: 10
+    margin: 10,
+    flexWrap: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
   },
   strong: {
     fontFamily: 'HelveticaNeue-Bold'
@@ -47,7 +51,7 @@ var Markdown = React.createClass({
   render: function() {
     var child = this.props.children.toString();
     var tree = this.parse(child);
-    return <View>{this.renderer(tree)}</View>;
+    return <View style={this.props.style}>{this.renderer(tree)}</View>;
   }
 });
 

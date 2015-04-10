@@ -33,7 +33,7 @@ module.exports = function(styles) {
     },
     paragraph: {
       react: function(node, output) {
-        return React.createElement(Text, { style: styles.paragraph }, output(node.content));
+        return React.createElement(View, { style: styles.paragraph }, output(node.content));
       }
     },
     strong: {
