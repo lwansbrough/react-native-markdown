@@ -1,6 +1,6 @@
 # react-native-markdown
 
-A component for rendering Markdown in React Native. This component is still in early development and is missing quite a few elements. See this issue for more information: https://github.com/lwansbrough/react-native-markdown/issues/3
+A component for rendering Markdown in React Native. This component is still in early development and is missing quite a few elements. Pull requests welcome.
 
 ## Getting started
 
