@@ -6,8 +6,14 @@ var _ = require('lodash');
 var SimpleMarkdown = require('simple-markdown');
 
 var styles = {
+  view: {
+  },
+  codeBlock: {
+    fontFamily: 'Courier-Bold',
+    fontWeight: 500
+  },
   em: {
-    fontFamily: 'HelveticaNeue-Italic'
+    fontStyle: 'italic'
   },
   hr: {
     backgroundColor: '#cccccc',
@@ -17,19 +23,56 @@ var styles = {
     height: 50, // TODO: React Native needs to support auto image size
     width: 50 // TODO: React Native needs to support auto image size
   },
+  inlineCode: {
+    backgroundColor: '#eeeeee',
+    borderColor: '#dddddd',
+    borderRadius: 3,
+    borderWidth: 1,
+    fontFamily: 'Courier-Bold'
+  },
   u: {
-    borderColor: '#333333',
+    borderColor: '#222222',
     borderBottomWidth: 1
   },
   paragraph: {
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start'
   },
   strong: {
-    fontFamily: 'HelveticaNeue-Bold'
+    fontWeight: 'bold'
+  },
+  table: {
+    borderWidth: 1,
+    borderColor: '#222222',
+    borderRadius: 3
+  },
+  tableHeader: {
+    backgroundColor: '#222222',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  tableHeaderCell: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    padding: 5,
+    textAlign: 'center'
+  },
+  tableRow: {
+    borderBottomWidth: 1,
+    borderColor: '#222222',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  tableRowLast: {
+    borderColor: 'transparent',
+    textAlign: 'center'
+  },
+  tableRowCell: {
+    padding: 5
   }
 };
 
@@ -54,7 +97,7 @@ var Markdown = React.createClass({
     var child = _.isArray(this.props.children)
       ? this.props.children.join('') : this.props.children;
     var tree = this.parse(child);
-    return <View style={this.props.style.view}>{this.renderer(tree)}</View>;
+    return <View style={[styles.view, this.props.style.view]}>{this.renderer(tree)}</View>;
   }
 });
 

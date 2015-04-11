@@ -26,6 +26,12 @@ var mdApp = React.createClass({
       <View>
         <Markdown>
           Some *really* basic **Markdown**.
+          {'\n\n'}
+          | # | Name   | Age |{'\n'}
+          |---|--------|-----|{'\n'}
+          | 1 | John   | 19  |{'\n'}
+          | 2 | Sally  | 18  |{'\n'}
+          | 3 | Stream | 20  |{'\n'}
         </Markdown>
       </View>
     );
@@ -46,15 +52,15 @@ Default style properties will be applied to the markdown. You will likely want t
 - `autolink` (`Not implemented`)
 - `blockQuote` (`Not implemented`)
 - `br` (`<Text>`)
-- `codeBlock` (`Not implemented`)
+- `codeBlock` (`<View>`) - WIP
 - `def` (`Not implemented`)
 - `del` (`<Text>`)
 - `em` (`<Text>`)
 - `fence` (`Not implemented`)
 - `heading` (`Not implemented`) - Also `heading1` through `heading6`
 - `hr` (`<View>`)
-- `image` (`<Image>`) - Implemented but not supported. Need a way to add `Image` to paragraphs (`Text`)
-- `inlineCode` (`Not implemented`)
+- `image` (`<Image>`) - Implemented but size is fixed to `50x50` until auto width is supported by React Native.
+- `inlineCode` (`<Text>`)
 - `link` (`Not implemented`)
 - `list` (`Not implemented`)
 - `mailto` (`Not implemented`)
@@ -63,7 +69,13 @@ Default style properties will be applied to the markdown. You will likely want t
 - `refimage` (`Not implemented`)
 - `reflink` (`Not implemented`)
 - `strong` (`<Text>`)
+- `table` (`<View>`)
+- `tableHeader` (`<View>`)
+- `tableHeaderCell` (`<Text>`)
+- `tableRow` (`<View>`)
+- `tableRowCell` (`<View>`)
+- `tableRowLast` (`<View>`, inherits from `tableRow`)
 - `text` (`<Text>`)
-- `u` (`<Text>`)
+- `u` (`<View>`)
 - `url` (`Not implemented`)
 - `view` (`<View>`) - This is the container `View` that the Markdown is rendered in.
