@@ -66,3 +66,4 @@ Default style properties will be applied to the markdown. You will likely want t
 - `text` (`<Text>`)
 - `u` (`<Text>`)
 - `url` (`Not implemented`)
+- `view` (`<View>`) - This is the container `View` that the Markdown is rendered in.
