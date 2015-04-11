@@ -37,15 +37,16 @@ var styles = {
 var Markdown = React.createClass({
 
   componentWillMount: function() {
-    var rules = require('./rules')(_.merge(styles, this.props.style));
-    rules = _.merge(SimpleMarkdown.defaultRules, rules);
+    var mergedStyles = _.merge({}, styles, this.props.style);
+    var rules = require('./rules')(mergedStyles);
+    rules = _.merge({}, SimpleMarkdown.defaultRules, rules);
 
     var parser = SimpleMarkdown.parserFor(rules);
     this.parse = function(source) {
       var blockSource = source + '\n\n';
       return parser(blockSource, {inline: false});
     };
-    this.renderer = SimpleMarkdown.outputFor(SimpleMarkdown.ruleOutput(rules, 'react'));
+    this.renderer = SimpleMarkdown.reactFor(SimpleMarkdown.ruleOutput(rules, 'react'));
   },
 
   render: function() {
