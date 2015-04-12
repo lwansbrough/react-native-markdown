@@ -58,8 +58,7 @@ var styles = {
   tableHeaderCell: {
     color: '#ffffff',
     fontWeight: 'bold',
-    padding: 5,
-    textAlign: 'center'
+    padding: 5
   },
   tableRow: {
     borderBottomWidth: 1,
@@ -68,8 +67,7 @@ var styles = {
     justifyContent: 'space-around'
   },
   tableRowLast: {
-    borderColor: 'transparent',
-    textAlign: 'center'
+    borderColor: 'transparent'
   },
   tableRowCell: {
     padding: 5
