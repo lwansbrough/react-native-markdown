@@ -9,8 +9,8 @@ var styles = {
   view: {
   },
   codeBlock: {
-    fontFamily: 'Courier-Bold',
-    fontWeight: 500
+    fontFamily: 'Courier',
+    fontWeight: '500'
   },
   em: {
     fontStyle: 'italic'
@@ -28,7 +28,8 @@ var styles = {
     borderColor: '#dddddd',
     borderRadius: 3,
     borderWidth: 1,
-    fontFamily: 'Courier-Bold'
+    fontFamily: 'Courier',
+    fontWeight: '500'
   },
   u: {
     borderColor: '#222222',
@@ -71,6 +72,9 @@ var styles = {
   },
   tableRowCell: {
     padding: 5
+  },
+  text: {
+    flex: 1
   }
 };
 

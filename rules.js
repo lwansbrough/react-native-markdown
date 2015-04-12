@@ -10,69 +10,69 @@ var _ = require('lodash');
 module.exports = function(styles) {
   return {
     br: {
-      react: function(node, output) {
-        return React.createElement(Text, { style: styles.br }, '\n\n');
+      react: function(node, output, state) {
+        return React.createElement(Text, { key: state.key, style: styles.br }, '\n\n');
       }
     },
     codeBlock: {
-      react: function(node, output) {
-        console.log(node.content);
-        return React.createElement(Text, { style: styles.codeBlock }, null);
+      react: function(node, output, state) {
+        return React.createElement(Text, { key: state.key, style: styles.codeBlock }, null);
       }
     },
     em: {
-      react: function(node, output) {
-        return React.createElement(Text, { style: styles.em }, output(node.content));
+      react: function(node, output, state) {
+        return React.createElement(Text, { key: state.key, style: styles.em }, output(node.content));
       }
     },
     hr: {
-      react: function(node, output) {
-        return React.createElement(View, { style: styles.hr });
+      react: function(node, output, state) {
+        return React.createElement(View, { key: state.key, style: styles.hr });
       }
     },
     image: {
-      react: function(node, output) {
+      react: function(node, output, state) {
         return React.createElement(Image, {
+          key: state.key,
           source: { uri: node.target },
           style: styles.image
         });
       }
     },
     inlineCode: {
-      react: function(node, output) {
-        return React.createElement(Text, { style: styles.inlineCode }, node.content);
+      react: function(node, output, state) {
+        return React.createElement(Text, { key: state.key, style: styles.inlineCode }, node.content);
       }
     },
     paragraph: {
-      react: function(node, output) {
-        return React.createElement(View, { style: styles.paragraph }, output(node.content));
+      react: function(node, output, state) {
+        return React.createElement(View, { key: state.key, style: styles.paragraph }, output(node.content));
       }
     },
     strong: {
-      react: function(node, output) {
-        return React.createElement(Text, { style: styles.strong }, output(node.content));
+      react: function(node, output, state) {
+        return React.createElement(Text, { key: state.key, style: styles.strong }, output(node.content));
       }
     },
     table: {
-      react: function(node, output) {
+      react: function(node, output, state) {
         var headers = _.map(node.header, function(content, i) {
           return React.createElement(Text, { style: styles.tableHeaderCell }, output(content));
         });
 
         var header = React.createElement(View, { style: styles.tableHeader }, headers);
 
-        var rows = _.map(node.cells, function(row, i) {
-          var cells = _.map(row, function(content) {
-            return React.createElement(View, { style: styles.tableRowCell }, output(content));
+        var rows = _.map(node.cells, function(row, r) {
+          var cells = _.map(row, function(content, c) {
+            return React.createElement(View, { key: c, style: styles.tableRowCell }, output(content));
           });
           var rowStyles = [styles.tableRow];
-          if (node.cells.length - 1 == i) {
+          if (node.cells.length - 1 == r) {
             rowStyles.push(styles.tableRowLast);
           }
-          return React.createElement(View, { style: rowStyles }, cells);
+          return React.createElement(View, { key: r, style: rowStyles }, cells);
         });
 
-        return React.createElement(View, { style: styles.table }, [ header, rows ]);
+        return React.createElement(View, { key: state.key, style: styles.table }, [ header, rows ]);
       }
     },
     text: {
@@ -81,8 +81,8 @@ module.exports = function(styles) {
       }
     },
     u: {
-      react: function(node, output) {
-        return React.createElement(View, { style: styles.u }, output(node.content));
+      react: function(node, output, state) {
+        return React.createElement(View, { key: state.key, style: styles.u }, output(node.content));
       }
     }
   }
