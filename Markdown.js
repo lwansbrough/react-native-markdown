@@ -15,6 +15,27 @@ var styles = {
   em: {
     fontStyle: 'italic'
   },
+  heading: {
+    fontWeight: '200'
+  },
+  heading1: {
+    fontSize: 32
+  },
+  heading2: {
+    fontSize: 24
+  },
+  heading3: {
+    fontSize: 18
+  },
+  heading4: {
+    fontSize: 16
+  },
+  heading5: {
+    fontSize: 13
+  },
+  heading6: {
+    fontSize: 11
+  },
   hr: {
     backgroundColor: '#cccccc',
     height: 1
@@ -29,11 +50,20 @@ var styles = {
     borderRadius: 3,
     borderWidth: 1,
     fontFamily: 'Courier',
-    fontWeight: '500'
+    fontWeight: 'bold'
   },
-  u: {
-    borderColor: '#222222',
-    borderBottomWidth: 1
+  list: {
+
+  },
+  listItem: {
+    flexDirection: 'row'
+  },
+  listItemBullet: {
+    fontSize: 20,
+    lineHeight: 20
+  },
+  listItemNumber: {
+    fontWeight: 'bold'
   },
   paragraph: {
     marginTop: 10,
@@ -72,7 +102,11 @@ var styles = {
   },
   tableRowCell: {
     padding: 5
-  }
+  },
+  u: {
+    borderColor: '#222222',
+    borderBottomWidth: 1
+  },
 };
 
 

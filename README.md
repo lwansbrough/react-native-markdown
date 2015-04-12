@@ -2,6 +2,10 @@
 
 A component for rendering Markdown in React Native. This component is still in early development and is missing quite a few elements. Pull requests welcome.
 
+## Known issues
+
+- Due to [a bug](https://github.com/facebook/react-native/issues/824) in underlying layout engine for React Native ([facebook/css-layout](https://github.com/facebook/css-layout)), this module will put your application in an infinite loop unless you patch the upstream changes from `css-layout`'s' `Layout.c` and `Layout.h` files.
+
 ## Getting started
 
 1. `npm install react-native-markdown --save`
@@ -57,12 +61,12 @@ Default style properties will be applied to the markdown. You will likely want t
 - `del` (`<Text>`)
 - `em` (`<Text>`)
 - `fence` (`Not implemented`)
-- `heading` (`Not implemented`) - Also `heading1` through `heading6`
+- `heading` (`<Text>`) - Also `heading1` through `heading6`
 - `hr` (`<View>`)
 - `image` (`<Image>`) - Implemented but size is fixed to `50x50` until auto width is supported by React Native.
 - `inlineCode` (`<Text>`)
 - `link` (`Not implemented`)
-- `list` (`Not implemented`)
+- `list` (`<View>`) - Also `listItem` (`<View>`), `listItemBullet` (`<Text>`) and `listItemNumber` (`<Text>`)
 - `mailto` (`Not implemented`)
 - `newline` (`Not implemented`)
 - `paragraph` (`<View>`)

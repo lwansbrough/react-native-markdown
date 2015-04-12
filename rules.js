@@ -24,6 +24,14 @@ module.exports = function(styles) {
         return React.createElement(Text, { key: state.key, style: styles.em }, output(node.content));
       }
     },
+    heading: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: [styles.heading, styles['heading' + node.level]]
+        }, output(node.content));
+      }
+    },
     hr: {
       react: function(node, output, state) {
         return React.createElement(View, { key: state.key, style: styles.hr });
@@ -41,6 +49,26 @@ module.exports = function(styles) {
     inlineCode: {
       react: function(node, output, state) {
         return React.createElement(Text, { key: state.key, style: styles.inlineCode }, node.content);
+      }
+    },
+    list: {
+      react: function(node, output, state) {
+
+        var items = _.map(node.items, function(item, i) {
+          var bullet;
+          if (node.ordered) {
+            bullet = React.createElement(Text, { style: styles.listItemNumber  }, (i + 1) + '. ');
+          }
+          else {
+            bullet = React.createElement(Text, { style: styles.listItemBullet }, '\u2022 ');
+          }
+          return React.createElement(View, {
+            key: i,
+            style: styles.listItem
+          }, [bullet, output(item, state)]);
+        });
+
+        return React.createElement(View, { key: state.key, style: styles.list }, items);
       }
     },
     paragraph: {
