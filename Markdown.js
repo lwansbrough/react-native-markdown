@@ -79,6 +79,12 @@ var styles = {
 
 var Markdown = React.createClass({
 
+  getDefaultProps: function() {
+    return {
+      style: styles
+    };
+  },
+
   componentWillMount: function() {
     var mergedStyles = _.merge({}, styles, this.props.style);
     var rules = require('./rules')(mergedStyles);
