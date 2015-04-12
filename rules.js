@@ -77,7 +77,15 @@ module.exports = function(styles) {
     },
     text: {
       react: function(node, output) {
-        return React.createElement(Text, { style: styles.text }, node.content);
+        var words = node.content.split(' ');
+        words = _.map(words, function(word, i) {
+          var elements = [];
+          if (i != words.length - 1) {
+            word = word + ' ';
+          }
+          return React.createElement(Text, { style: styles.text }, word);
+        });
+        return words;
       }
     },
     u: {

@@ -72,9 +72,6 @@ var styles = {
   },
   tableRowCell: {
     padding: 5
-  },
-  text: {
-    flex: 1
   }
 };
 
