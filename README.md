@@ -1,6 +1,6 @@
 # react-native-markdown
 
-A component for rendering Markdown in React Native. This component is still in early development and is missing quite a few elements. Pull requests welcome.
+A component for rendering Markdown in React Native. Pull requests welcome.
 
 ## Known issues
 
@@ -53,25 +53,21 @@ Default style properties will be applied to the markdown. You will likely want t
 
 *Note: The text inside the parentheses denotes the element type.*
 
-- `autolink` (`Not implemented`)
-- `blockQuote` (`Not implemented`)
+- `autolink` (`<Text>`) - WIP
+- `blockQuote` (`<Text>`) - WIP
 - `br` (`<Text>`)
 - `codeBlock` (`<View>`) - WIP
-- `def` (`Not implemented`)
 - `del` (`<Text>`)
 - `em` (`<Text>`)
-- `fence` (`Not implemented`)
 - `heading` (`<Text>`) - Also `heading1` through `heading6`
 - `hr` (`<View>`)
 - `image` (`<Image>`) - Implemented but size is fixed to `50x50` until auto width is supported by React Native.
 - `inlineCode` (`<Text>`)
-- `link` (`Not implemented`)
+- `link` (`<Text>`) - WIP
 - `list` (`<View>`) - Also `listItem` (`<View>`), `listItemBullet` (`<Text>`) and `listItemNumber` (`<Text>`)
-- `mailto` (`Not implemented`)
-- `newline` (`Not implemented`)
+- `mailto` (`<Text>`) - WIP
+- `newline` (`<Text>`) - WIP
 - `paragraph` (`<View>`)
-- `refimage` (`Not implemented`)
-- `reflink` (`Not implemented`)
 - `strong` (`<Text>`)
 - `table` (`<View>`)
 - `tableHeader` (`<View>`)
@@ -81,5 +77,5 @@ Default style properties will be applied to the markdown. You will likely want t
 - `tableRowLast` (`<View>`, inherits from `tableRow`)
 - `text` (`<Text>`)
 - `u` (`<View>`)
-- `url` (`Not implemented`)
+- `url` (`<Text>`)
 - `view` (`<View>`) - This is the container `View` that the Markdown is rendered in.

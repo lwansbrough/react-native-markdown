@@ -9,14 +9,45 @@ var _ = require('lodash');
 
 module.exports = function(styles) {
   return {
+    autolink: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.autolink,
+          onPress: _.noop
+        }, node.target);
+      }
+    },
+    blockQuote: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.blockQuote
+        }, output(node.content, state));
+      }
+    },
     br: {
       react: function(node, output, state) {
-        return React.createElement(Text, { key: state.key, style: styles.br }, '\n\n');
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.br
+        }, '\n\n');
       }
     },
     codeBlock: {
       react: function(node, output, state) {
-        return React.createElement(Text, { key: state.key, style: styles.codeBlock }, null);
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.codeBlock
+        }, null);
+      }
+    },
+    del: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.del
+        }, output(node.content, state));
       }
     },
     em: {
@@ -51,6 +82,14 @@ module.exports = function(styles) {
         return React.createElement(Text, { key: state.key, style: styles.inlineCode }, node.content);
       }
     },
+    link: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.autolink
+        }, output(node.content, state));
+      }
+    },
     list: {
       react: function(node, output, state) {
 
@@ -69,6 +108,23 @@ module.exports = function(styles) {
         });
 
         return React.createElement(View, { key: state.key, style: styles.list }, items);
+      }
+    },
+    mailto: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.mailto,
+          onPress: _.noop
+        }, output(node.content));
+      }
+    },
+    newline: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.newline
+        }, '\n');
       }
     },
     paragraph: {
@@ -119,6 +175,15 @@ module.exports = function(styles) {
     u: {
       react: function(node, output, state) {
         return React.createElement(View, { key: state.key, style: styles.u }, output(node.content));
+      }
+    },
+    url: {
+      react: function(node, output, state) {
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.url,
+          onPress: _.noop
+        }, node.target);
       }
     }
   }

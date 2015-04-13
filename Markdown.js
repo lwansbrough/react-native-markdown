@@ -12,6 +12,9 @@ var styles = {
     fontFamily: 'Courier',
     fontWeight: '500'
   },
+  del: {
+    containerBackgroundColor: '#222222'
+  },
   em: {
     fontStyle: 'italic'
   },
@@ -103,10 +106,13 @@ var styles = {
   tableRowCell: {
     padding: 5
   },
+  text: {
+    color: '#222222'
+  },
   u: {
     borderColor: '#222222',
     borderBottomWidth: 1
-  },
+  }
 };
 
 
