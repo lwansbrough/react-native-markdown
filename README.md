@@ -68,6 +68,7 @@ Default style properties will be applied to the markdown. You will likely want t
 - `mailto` (`<Text>`) - WIP
 - `newline` (`<Text>`) - WIP
 - `paragraph` (`<View>`)
+- `plainText` (`<Text>`) - Use for styling text without any associated styles
 - `strong` (`<Text>`)
 - `table` (`<View>`)
 - `tableHeader` (`<View>`)
@@ -75,7 +76,7 @@ Default style properties will be applied to the markdown. You will likely want t
 - `tableRow` (`<View>`)
 - `tableRowCell` (`<View>`)
 - `tableRowLast` (`<View>`, inherits from `tableRow`)
-- `text` (`<Text>`)
+- `text` (`<Text>`) - Inherited by all text based elements
 - `u` (`<View>`)
 - `url` (`<Text>`)
 - `view` (`<View>`) - This is the container `View` that the Markdown is rendered in.

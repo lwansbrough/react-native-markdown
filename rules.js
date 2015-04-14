@@ -11,15 +11,17 @@ module.exports = function(styles) {
   return {
     autolink: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.autolink,
           onPress: _.noop
-        }, node.target);
+        }, output(node.content, state));
       }
     },
     blockQuote: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.blockQuote
@@ -36,6 +38,7 @@ module.exports = function(styles) {
     },
     codeBlock: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.codeBlock
@@ -44,6 +47,7 @@ module.exports = function(styles) {
     },
     del: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.del
@@ -52,15 +56,20 @@ module.exports = function(styles) {
     },
     em: {
       react: function(node, output, state) {
-        return React.createElement(Text, { key: state.key, style: styles.em }, output(node.content));
+        state.withinText = true;
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.em
+        }, output(node.content, state));
       }
     },
     heading: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: [styles.heading, styles['heading' + node.level]]
-        }, output(node.content));
+        }, output(node.content, state));
       }
     },
     hr: {
@@ -79,11 +88,16 @@ module.exports = function(styles) {
     },
     inlineCode: {
       react: function(node, output, state) {
-        return React.createElement(Text, { key: state.key, style: styles.inlineCode }, node.content);
+        state.withinText = true;
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.inlineCode
+        }, output(node.content, state));
       }
     },
     link: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.autolink
@@ -112,11 +126,12 @@ module.exports = function(styles) {
     },
     mailto: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.mailto,
           onPress: _.noop
-        }, output(node.content));
+        }, output(node.content, state));
       }
     },
     newline: {
@@ -129,25 +144,37 @@ module.exports = function(styles) {
     },
     paragraph: {
       react: function(node, output, state) {
-        return React.createElement(View, { key: state.key, style: styles.paragraph }, output(node.content));
+        return React.createElement(View, {
+          key: state.key,
+          style: styles.paragraph
+        }, output(node.content, state));
       }
     },
     strong: {
       react: function(node, output, state) {
-        return React.createElement(Text, { key: state.key, style: styles.strong }, output(node.content));
+        state.withinText = true;
+        return React.createElement(Text, {
+          key: state.key,
+          style: styles.strong
+        }, output(node.content, state));
       }
     },
     table: {
       react: function(node, output, state) {
         var headers = _.map(node.header, function(content, i) {
-          return React.createElement(Text, { style: styles.tableHeaderCell }, output(content));
+          return React.createElement(Text, {
+            style: styles.tableHeaderCell
+          }, output(content, state));
         });
 
         var header = React.createElement(View, { style: styles.tableHeader }, headers);
 
         var rows = _.map(node.cells, function(row, r) {
           var cells = _.map(row, function(content, c) {
-            return React.createElement(View, { key: c, style: styles.tableRowCell }, output(content));
+            return React.createElement(View, {
+              key: c,
+              style: styles.tableRowCell
+            }, output(content, state));
           });
           var rowStyles = [styles.tableRow];
           if (node.cells.length - 1 == r) {
@@ -160,30 +187,42 @@ module.exports = function(styles) {
       }
     },
     text: {
-      react: function(node, output) {
+      react: function(node, output, state) {
+        // Breaking words up in order to allow for text reflowing in flexbox
         var words = node.content.split(' ');
         words = _.map(words, function(word, i) {
           var elements = [];
           if (i != words.length - 1) {
             word = word + ' ';
           }
-          return React.createElement(Text, { style: styles.text }, word);
+          var textStyles = [styles.text];
+          if (!state.withinText) {
+            textStyles.push(styles.plainText);
+          }
+          return React.createElement(Text, {
+            style: textStyles
+          }, word);
         });
         return words;
       }
     },
     u: {
       react: function(node, output, state) {
-        return React.createElement(View, { key: state.key, style: styles.u }, output(node.content));
+        state.withinText = true;
+        return React.createElement(View, {
+          key: state.key,
+          style: styles.u
+        }, output(node.content, state));
       }
     },
     url: {
       react: function(node, output, state) {
+        state.withinText = true;
         return React.createElement(Text, {
           key: state.key,
           style: styles.url,
           onPress: _.noop
-        }, node.target);
+        }, output(node.content, state));
       }
     }
   }
