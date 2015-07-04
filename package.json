@@ -13,7 +13,7 @@
     "simple-markdown": "git://github.com/lwansbrough/simple-markdown.git"
   },
   "peerDependencies": {
-    "react-native": "^0.4.0"
+    "react-native": "*"
   },
   "keywords": [
     "react",
